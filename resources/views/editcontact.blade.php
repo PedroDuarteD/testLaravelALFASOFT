@@ -21,3 +21,12 @@
     
     <button type="submit">Salvar</button>
     </form>
+    
+     @if($errors->any())
+     <h2> Errors
+         </h2>
+         
+         @foreach($errors->all() as $erro)
+          <h5>  {{$erro}} </h5>
+         @endforeach
+    @endif
