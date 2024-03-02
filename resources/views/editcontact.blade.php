@@ -10,13 +10,13 @@
     
      <div>
     <label>Email</label>
-     <input type="email" value="{{$contact['email']}}" name="edit_email">
+     <input type="email" value="{{$contact['email']}}" name="email">
     </div>
     
     
      <div>
     <label>Number</label>
-     <input type="number" value="{{$contact['number']}}" name="edit_number">
+     <input type="number" value="{{$contact['number']}}" name="number">
     </div>
     
     <button type="submit">Salvar</button>
