@@ -24,7 +24,7 @@ class ContactPostRequest extends FormRequest
     {
         return [
            'email' => 'required|unique:contact|max:255',
-        'edit_name' => "required",
+        'edit_name' => "required|min:5",
          'number' => 'required|unique:contact|min:9|integer',
         ];
     }
