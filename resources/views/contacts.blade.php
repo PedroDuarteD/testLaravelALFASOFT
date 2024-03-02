@@ -5,9 +5,9 @@
 <div style="display: flex; justify-content: space-between;">
     <div>contacts</div>
     @if($auth)
-   <a href="diconnectAuth">Disconnect {{$auth}}</a>
+   <a href="diconnectAuth">Disconnect </a>
     @else 
-    <a href="login">Login {{$auth}}</a>
+    <a href="login">Login </a>
    
     @endif
         
