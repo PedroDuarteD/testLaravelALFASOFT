@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\AuthController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,12 +17,17 @@ use App\Http\Controllers\ContactController;
 
 
 Route::get("/", [ContactController::class, "all"]);
+Route::get("/login",[AuthController::class, "page"]);
+Route::post("/loginAuth",[AuthController::class, "auth"]);
+Route::get("/diconnectAuth",[AuthController::class, "diconnectAuth"]);
+
+
 Route::get("addcontact", [ContactController::class, "addContact"]);
 
-Route::post("postContact",[ContactController::class,"postContact"]);
+Route::post("postContact",[ContactController::class,"postContact"])->middleware('auth');
 
-Route::delete("deleteContact/{id}", [ContactController::class,"deleteContact"]);
+Route::delete("deleteContact/{id}", [ContactController::class,"deleteContact"])->middleware('auth');
 
 Route::get("editContactForm/{id}",[ContactController::class, "editContactForm"]);
 
-Route::post("editContact",[ContactController::class, "editContact"]);
+Route::post("editContact",[ContactController::class, "editContact"])->middleware('auth');

@@ -1,6 +1,17 @@
-contacts
+
 
 <a href="addcontact">Add Contact</a>
+
+<div style="display: flex; justify-content: space-between;">
+    <div>contacts</div>
+    @if($auth)
+   <a href="diconnectAuth">Disconnect {{$auth}}</a>
+    @else 
+    <a href="login">Login {{$auth}}</a>
+   
+    @endif
+        
+</div>
 
 @foreach($allcontacts as $contact)
 <div style="border: 1px solid black; border-radius: 10px; padding: 10px">

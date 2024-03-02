@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ContactModel;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
 
 class ContactController extends Controller
 {
     public function all(){
+        
         
         
          $contacts =  ContactModel::all();
@@ -20,11 +22,16 @@ class ContactController extends Controller
          }
            
         
-        return view("contacts", ["allcontacts"=> $list]);
+        return view("contacts", ["allcontacts"=> $list, "auth"=> Auth::check()]);
     }
     
     public function addContact(){
-        return view("addcontact");
+        if(Auth::check()){
+             return view("addcontact");
+        }else{
+            echo json_encode(array("ans"=> "Error","sms"=> "Need to have AUTH USER !",));
+        }
+       
     }
     
     public function postContact(Request $request){
@@ -52,6 +59,7 @@ class ContactController extends Controller
       
     }
     public function editContactForm($id){
+         if(Auth::check()){
          if(!empty($id)){
              $contact =  ContactModel::find($id);
              
@@ -59,7 +67,9 @@ class ContactController extends Controller
         }else{
             echo json_encode(array("ans"=> "Error","sms"=> "id is empty!"));
         }
-       
+         }else{
+              echo json_encode(array("ans"=> "Error","sms"=> "Need to have AUTH USER !"));
+         }
     }
     
         public function editContact(Request $request){
