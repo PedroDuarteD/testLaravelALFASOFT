@@ -10,14 +10,23 @@
     
      <div>
     <label>Email</label>
-     <input type="email" name="edit_email">
+     <input type="email" name="email">
     </div>
     
     
      <div>
     <label>Number</label>
-     <input type="number" name="edit_number">
+     <input type="number" name="number">
     </div>
     
     <button type="submit">Salvar</button>
     </form>
+    
+    @if($errors->any())
+     <h2> Errors
+         </h2>
+         
+         @foreach($errors->all() as $erro)
+          <h5>  {{$erro}} </h5>
+         @endforeach
+    @endif

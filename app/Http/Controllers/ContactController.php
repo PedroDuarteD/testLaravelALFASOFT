@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ContactModel;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ContactPostRequest;
 
 class ContactController extends Controller
 {
@@ -34,14 +35,14 @@ class ContactController extends Controller
        
     }
     
-    public function postContact(Request $request){
+    public function postContact(ContactPostRequest $request){
         
+        if( $request->validated()){
+            $name  = filter_var($request["edit_name"], FILTER_SANITIZE_STRING);
         
-        $name  = filter_var($request["edit_name"], FILTER_SANITIZE_STRING);
+        $email  = filter_var($request["email"], FILTER_SANITIZE_STRING);
         
-        $email  = filter_var($request["edit_email"], FILTER_SANITIZE_STRING);
-        
-        $number  = filter_var($request["edit_number"], FILTER_SANITIZE_STRING);
+        $number  = filter_var($request["number"], FILTER_SANITIZE_STRING);
         
         if(!empty($name) && !empty($email) && !empty($number)){
             
@@ -50,12 +51,15 @@ class ContactController extends Controller
             $contact->email = $email;
             $contact->number = $number;
             $contact->save();
-            return Redirect::to('pedroduarte2-lv.recruitment.alfasoft.pt');
+            return Redirect::to('https://pedroduarte2-lv.recruitment.alfasoft.pt');
 
-            echo json_encode(array("ans"=> "Success"));
+           
         }else{
             echo json_encode(array("ans"=> "Error","sms"=> "Need more data to add !"));
         }
+        }
+        
+      
       
     }
     public function editContactForm($id){
