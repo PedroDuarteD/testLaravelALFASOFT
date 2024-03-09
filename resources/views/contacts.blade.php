@@ -23,8 +23,9 @@
 
 <a href="{{ url('/editContactForm/'.$contact['id'] ) }}">Edit</a>
 
-<form action="{{ url('deleteContact', ['id' => $contact['id'] ])}}" method="delete">
+<form action="{{ url('deleteContact', ['id' => $contact['id'] ])}}" method="POST">
     @csrf
+    @method("delete")
 <button type="submit">Eliminar</button>
 </form>
 </div>

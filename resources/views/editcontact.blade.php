@@ -1,7 +1,9 @@
 
 
-<form action=" url( 'editContact', ['id => $contact['id'] ] )" method="POST">
+<form action="{{ route( 'editContact', ["id" => $contact['id'] ] )}}" method="POST">
    @csrf
+   @method('PUT')
+
     <div>
     <label>Name</label>
      <input type="text" value="{{$contact['name']}}" name="edit_name">

@@ -26,8 +26,8 @@ Route::get("addcontact", [ContactController::class, "addContact"]);
 
 Route::post("postContact",[ContactController::class,"postContact"])->middleware('auth');
 
-Route::delete("deleteContact/{id}", [ContactController::class,"deleteContact"])->middleware('auth');
+Route::delete("deleteContact/{id}", [ContactController::class,"deleteContact"])->middleware('auth')->name("deleteContact");
 
 Route::get("editContactForm/{id}",[ContactController::class, "editContactForm"]);
 
-Route::post("editContact",[ContactController::class, "editContact"])->middleware('auth');
+Route::put("editContact/{id}",[ContactController::class, "editContact"])->middleware('auth')->name("editContact");

@@ -22,7 +22,7 @@ class AuthController extends Controller
      if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
  
-           return Redirect::to('https://pedroduarte2-lv.recruitment.alfasoft.pt');
+           return Redirect::to('http://localhost:8000');
         }else{
             echo "Error";
         }
@@ -31,7 +31,7 @@ class AuthController extends Controller
     public function diconnectAuth(){
         if(Auth::check()){
              Auth::logout();
-         return Redirect::to('https://pedroduarte2-lv.recruitment.alfasoft.pt');
+         return Redirect::to('http://localhost:8000');
         }else{
              echo json_encode(array("ans"=>"Need to Have AUTH ON"));
         }

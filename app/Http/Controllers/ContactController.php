@@ -51,7 +51,7 @@ class ContactController extends Controller
             $contact->email = $email;
             $contact->number = $number;
             $contact->save();
-            return Redirect::to('https://pedroduarte2-lv.recruitment.alfasoft.pt');
+            return Redirect::to('http://localhost:8000');
 
            
         }else{
@@ -91,7 +91,7 @@ class ContactController extends Controller
             $contact->email = $email;
             $contact->number = $number;
             $contact->save();
-              return Redirect::to('https://pedroduarte2-lv.recruitment.alfasoft.pt');
+              return Redirect::to('http://localhost:8000');
         }else{
             echo json_encode(array("ans"=> "Error","sms"=> "id is empty!"));
         }
@@ -101,7 +101,7 @@ class ContactController extends Controller
         if(!empty($id)){
              $contact =  ContactModel::find($id);
              $contact->delete();
-              return Redirect::to('pedroduarte2-lv.recruitment.alfasoft.pt');
+              return Redirect::to('http://localhost:8000');
         }else{
             echo json_encode(array("ans"=> "Error","sms"=> "id is empty!"));
         }
